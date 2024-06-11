@@ -7,9 +7,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $review = $_POST['review'];
 
+    // Set the timezone to Asia/Manila
+    date_default_timezone_set('Asia/Manila');
+
+    // Get the current date and time in the format 'Y-m-d H:i:s'
+    $created_at = date('Y-m-d H:i:s');
+
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO reviews (name, review) VALUES (?, ?)");
-    $stmt->bind_param("ss", $name, $review);
+    $stmt = $conn->prepare("INSERT INTO reviews (name, review, created_at) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $review, $created_at);
 
     if ($stmt->execute() === TRUE) {
         $message = "success";
@@ -22,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 
 
 <!DOCTYPE html>

@@ -31,7 +31,7 @@ CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `review` varchar(300) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
